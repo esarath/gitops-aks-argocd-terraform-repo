@@ -8,7 +8,7 @@ resource "null_resource" "install_argocd" {
   depends_on = [kubernetes_namespace.argocd]
 
   provisioner "local-exec" {
-    command = "kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
+    command = "kubectl apply --server-side -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
   }
 }
 
